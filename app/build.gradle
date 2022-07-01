@@ -89,6 +89,7 @@ dependencies {
     def room_version = "2.4.2"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.room:room-ktx:2.4.2'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -96,4 +97,6 @@ dependencies {
     // Paging
     def paging_version = "3.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.room:room-paging:2.5.0-alpha02" // to call withTransaction
+
 }

@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.okihita.offlinecachingremotemediator.data.local.dao.UnsplashDatabase
 import com.okihita.offlinecachingremotemediator.ui.theme.OfflineCachingRemoteMediatorTheme
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -2,6 +2,7 @@ package com.okihita.offlinecachingremotemediator.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.okihita.offlinecachingremotemediator.data.local.dao.UnsplashDatabase
 import com.okihita.offlinecachingremotemediator.util.Constants.UNSPLASH_DATABASE
 import dagger.Module

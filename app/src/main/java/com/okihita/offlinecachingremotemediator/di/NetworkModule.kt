@@ -27,7 +27,7 @@ class NetworkModule {
             .connectTimeout(15, TimeUnit.SECONDS)
             .build()
 
-    @OptIn(ExperimentalSerializationApi::class)
+    @ExperimentalSerializationApi
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
