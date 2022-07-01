@@ -7,6 +7,7 @@ import com.okihita.offlinecachingremotemediator.util.Constants.UNSPLASH_IMAGE_TA
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Serializable
 @Entity(tableName = UNSPLASH_IMAGE_TABLE)
 data class UnsplashImage(
     @PrimaryKey(autoGenerate = false)
