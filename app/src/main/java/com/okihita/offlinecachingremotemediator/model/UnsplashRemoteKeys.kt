@@ -8,6 +8,6 @@ import com.okihita.offlinecachingremotemediator.util.Constants
 data class UnsplashRemoteKeys(
     @PrimaryKey(autoGenerate = false)
     val id: String,
-    val prevPage: Int,
-    val nextPage: Int
+    val prevPage: Int?,
+    val nextPage: Int?
 )

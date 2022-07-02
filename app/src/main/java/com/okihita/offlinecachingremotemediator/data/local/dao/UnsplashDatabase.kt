@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.okihita.offlinecachingremotemediator.model.UnsplashImage
 import com.okihita.offlinecachingremotemediator.model.UnsplashRemoteKeys
 
-@Database(entities = [UnsplashImage::class, UnsplashRemoteKeys::class], version = 1)
+@Database(entities = [UnsplashImage::class, UnsplashRemoteKeys::class], version = 1, exportSchema = false)
 abstract class UnsplashDatabase : RoomDatabase() {
 
     abstract fun unsplashImageDao(): UnsplashImageDao

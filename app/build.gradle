@@ -79,24 +79,30 @@ dependencies {
     // Dagger/Hilt
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-compiler:2.42"
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // JSON Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3"
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 
+    // Coil (instead of Glide)
+    implementation("io.coil-kt:coil:2.1.0")
+    implementation("io.coil-kt:coil-compose:2.1.0")
+
 
     // Room
-    def room_version = "2.4.2"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
     implementation 'androidx.room:room-ktx:2.4.2'
+    implementation "androidx.room:room-paging:2.4.2" // to call withTransaction
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
     // Paging
     def paging_version = "3.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
-    implementation "androidx.room:room-paging:2.5.0-alpha02" // to call withTransaction
+    implementation "androidx.paging:paging-compose:1.0.0-alpha15"
 
 }

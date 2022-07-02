@@ -20,13 +20,27 @@ class UnsplashRemoteMediator @Inject constructor(
     private val unsplashImageDao = unsplashDatabase.unsplashImageDao()
     private val unsplashRemoteKeysDao = unsplashDatabase.unsplashRemoteKeysDao()
 
+    override suspend fun initialize(): InitializeAction {
+        return InitializeAction.LAUNCH_INITIAL_REFRESH
+    }
+
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, UnsplashImage>
+        // state contains at least three: The pages that were loaded before (pages)
+        // the most recently accessed index in the list (i.e. item index in Room) (anchorPosition)
+        // the paging config, too that we define when initializing paging stream (config)
     ): MediatorResult {
 
+        state.anchorPosition
+
         return try {
+
+            // What's the current page that's going to be loaded?
             val currentPage = when (loadType) {
+
+                // If it's the initial load, from the initial app state.
+                // By default it's 1
                 LoadType.REFRESH -> {
                     val remoteKeys = getRemoteKeysClosestToCurrentPosition(state)
                     remoteKeys?.nextPage?.minus(1) ?: 1
@@ -38,6 +52,8 @@ class UnsplashRemoteMediator @Inject constructor(
                     )
                     prevPage
                 }
+
+                // Append means load data at the end. We retrieve the last item that was loaded from
                 LoadType.APPEND -> {
                     val remoteKeys = getRemoteKeysForLastItem(state)
                     val nextPage = remoteKeys?.nextPage ?: return MediatorResult.Success(
@@ -50,8 +66,8 @@ class UnsplashRemoteMediator @Inject constructor(
             val response = unsplashApi.getAllImages(page = currentPage, per_page = 10)
             val endOfPaginationReached = response.isEmpty()
 
-            val prevPage = if (currentPage == 1) -1 else currentPage - 1
-            val nextPage = if (endOfPaginationReached) -1 else currentPage + 1
+            val prevPage = if (currentPage == 1) null else currentPage - 1
+            val nextPage = if (endOfPaginationReached) null else currentPage + 1
 
             unsplashDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {

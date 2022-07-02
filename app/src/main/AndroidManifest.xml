@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.okihita.offlinecachingremotemediator">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".UnsplashApplication"
         android:allowBackup="true"
@@ -14,16 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OfflineCachingRemoteMediator"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.OfflineCachingRemoteMediator">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
